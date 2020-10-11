@@ -1,20 +1,94 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  <ion-split-pane when="sm" content-id="main-content">
+    <ion-menu content-id="main-content">
+      <ion-header>
+        <ion-toolbar color="success">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-list-header>
+            Navigate
+          </ion-list-header>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item button>
+              <ion-icon slot="start" name='home'></ion-icon>
+              <ion-label>
+                Home
+              </ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-icon slot="start" name="receipt"></ion-icon>
+              <ion-label>
+                Reservas
+              </ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-icon slot="start" name="business"></ion-icon>
+              <ion-label>
+                Lojas
+              </ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-icon slot="start" name="car"></ion-icon>
+              <ion-label>
+                Frota
+              </ion-label>
+            </ion-item>
+            <ion-item button>
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>
+                Perfil
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+    <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar color="success">
+          <ion-buttons slot="start">
+            <ion-menu-toggle>
+              <ion-button>
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+              </ion-button>
+            </ion-menu-toggle>
+          </ion-buttons>
+          
+          <ion-title>CLICK CAR</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <h6>ONDE GOSTARIA DE RETIRAR?</h6>
+        <ion-item>
+          <ion-icon name="location" slot="start"></ion-icon>
+             <ion-input> Selecione o local de retirada</ion-input>             
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+             <ion-input> Selecione a data de retirada</ion-input>             
+        </ion-item>
+        <h6>ONDE GOSTARIA DE DEVOLVER?</h6>
+        <ion-item>
+          <ion-icon name="location" slot="start"></ion-icon>
+             <ion-input> Selecione o local de devolução</ion-input>             
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+             <ion-input> Selecione a data de devolução</ion-input>             
+        </ion-item>
+        <br>
+        <ion-button expand="block" color="success">Buscar</ion-button>
+
+        
+      </ion-content>
+    </div>
+
+  </ion-split-pane>
+</ion-app>
