@@ -56,7 +56,7 @@ export class ProfilePage implements OnInit {
  await alert.present();
 }
 
-//prompt Facebook
+//prompt Facebook 
 async fbPrompt() {
   const alert = await this.alertCtrl.create({
     title: 'Login',
