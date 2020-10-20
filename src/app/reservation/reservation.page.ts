@@ -23,12 +23,12 @@ export class ReservationPage implements OnInit {
   //cria o objeto car
 public cars: Car[] = [
   {
-    name: 'HB 20 Sedan',
-    img: 'https://www.consorciodeautos.com.br/wp-content/plugins/ns_tabelafixa/imagensproduto/89-nm_produto12-01-2017-14-57-10-prF.png', 
-    completed: false
+    name: 'GRUPO A - CLICK CAR',
+    img: 'https://www.autossegredos.com.br/wp-content/uploads/2020/04/fiat-mobi-easy-1280x720.jpg',
+    completed: true
   },
   {
-    name: 'Jeep Compass 2.0',
+    name: 'GRUPO J - SUV ESPECIAL',
     img: 'https://s2.glbimg.com/7lMJLzC9w2nPJ2FEDhwqxL1gUTg=/512x320/smart/e.glbimg.com/og/ed/f/original/2020/08/03/jeep_compass_s_1.jpeg', 
     completed: false
   },
