@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "clickcar-e9583": {
+      "hosting": {
+        "app": [
+          "clickcar-e9583"
+        ]
+      }
+    }
+  }
+}
