@@ -1,3 +1,29 @@
+import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
+
+interface Car {
+  name: string;
+  img: any;
+  info: string;
+  km: string;
+  desconto: string;
+  detalhes: string;
+  valor: string;
+};
+
+@Component({
+  selector: 'app-fleet',
+  templateUrl: './fleet.page.html',
+  styleUrls: ['./fleet.page.scss'],
+})
+export class FleetPage implements OnInit {
+
+  constructor(public alertController: AlertController) { }
+
+  ngOnInit() {
+  }
+
+  //cria o objeto car
 public cars: Car[] = [
   {
     name: 'GRUPO A - CLICK CAR',

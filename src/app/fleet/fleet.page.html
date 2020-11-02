@@ -69,7 +69,7 @@
   <ion-card *ngFor="let car of cars"><!-- ativa os dados dos objetos-->
     <ion-item>
       <ion-label>{{car.name}}</ion-label>
-      <ion-button fill="outline" slot="end" (click) = presentAlert()>Detalhes</ion-button>      
+      <ion-button fill="outline" slot="end" (click) = presentAlert(car)>Detalhes</ion-button>      
     </ion-item>    
     <img src="{{car.img}}">
     <ion-card-content align="center">
@@ -93,4 +93,3 @@
       </ion-card>
   </ion-card>
 </ion-content>
-
