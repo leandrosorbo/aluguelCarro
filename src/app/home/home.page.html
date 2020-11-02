@@ -101,6 +101,10 @@
             [min]="minDateOutput" [max]="maxDateOutput" [(ngModel)]="data2"></ion-datetime>
         </ion-item>
 
+        <br>
+        <ion-button button expand="block" color="success" *ngIf="!select1 || !data1 || !select2 || !data2">Reservar
+        </ion-button>
+
         <ion-button *ngIf="select1 && data1 && select2 && data2" button routerLink="/fleet" expand="block"
           color="success" (click)="saveData()">Reservar</ion-button>
       </ion-content>

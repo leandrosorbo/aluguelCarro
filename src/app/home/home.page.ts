@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,15 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  //inputtext: string;
+  select1: string;
+  data1: string;
+  select2: string;
+  data2: string;
+
+
+  key = 'username';
 
   selectedDateString1 = new Date().toISOString();
   minDateInput: string = new Date().toISOString();
@@ -16,8 +27,7 @@ export class HomePage {
   minDateOutput: string = new Date().toISOString();
   maxDateOutput: string = new Date().toISOString();
 
-  constructor(private platform1: Platform, private platform2: Platform) {
-  
+  constructor(private platform1: Platform, private platform2: Platform, private storage: Storage) {
 
     this.platform1.ready().then(() => {
       let date1: Date = new Date();
@@ -39,6 +49,31 @@ export class HomePage {
       date2.setDate(date2.getDate() + 365);
       this.maxDateOutput = date2.toISOString();
 
-    })
+    }
+
+    );
+
   }
+
+  saveData() {
+    console.log(
+      'select1', this.select1,
+      'data1', this.data1,
+      'select2', this.select2,
+      'data2', this.data2,
+    );
+    //this.storage.set(this.key, '');
+    this.storage.set('select1', this.select1);
+    this.storage.set('data1', this.data1);
+    this.storage.set('select2', this.select2);
+    this.storage.set('data2', this.data2);
+  }
+
+  // loadData() {
+//   this.storage.get(this.key).then((val) => {
+//     console.log('Your username is', val);
+//   });
+// }
+
+
 }
