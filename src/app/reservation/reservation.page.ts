@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 
 type Car = {
@@ -8,10 +9,13 @@ type Car = {
   completed: boolean;
   info: string;
   km: string;
-  desconto: string;
+  desconto: string; 
   detalhes: string;
   valor: string;
 };
+
+
+
 
 @Component({
   selector: 'app-reservation',
@@ -19,8 +23,9 @@ type Car = {
   styleUrls: ['./reservation.page.scss'],
 })
 export class ReservationPage implements OnInit {
+  
 
-  constructor (public alertController: AlertController) { }
+  constructor (public alertController: AlertController, private storage: Storage) { }
 
   ngOnInit() {
   }
@@ -30,7 +35,7 @@ public cars: Car[] = [
   {
     name: 'GRUPO A - CLICK CAR',
     img: 'https://www.autossegredos.com.br/wp-content/uploads/2020/04/fiat-mobi-easy-1280x720.jpg',
-    completed: true,
+    completed: false,
     info: 'Mobi Like ou Similar',
     km: 'KM Livre',
     desconto: 'Desconto Pré Agendamento',
@@ -48,6 +53,13 @@ public cars: Car[] = [
     valor:'R$ 97,00' //colocar código de valor
   },
 ];
+
+
+//storage
+  
+  key = 'username';
+
+
 public filteredCars = this.cars.slice();
 
 public selectedSegment: 'current' | 'previous' = 'current';
@@ -88,5 +100,19 @@ public segmentChanged(){
   await alert.present();
  }
 
+ saveData() {
+  console.log(
+    'selectedSegment', this.selectedSegment,
+  );
+ 
+  this.storage.set('selectedSegment', this.selectedSegment);
+  
 }
 
+// loadData() {
+//   this.storage.get(this.key).then((val) => {
+//     console.log('Your username is', val);
+//   });
+// }
+
+}
