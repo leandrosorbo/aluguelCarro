@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/auth';
+import firebase from 'firebase/app';
 
 
 @Component({
@@ -10,142 +11,74 @@ import { AlertController } from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
 
-  constructor (private alertCtrl: AlertController) { }
+  constructor(private alertCtrl: AlertController, public auth: AngularFireAuth) { }
+
+    login() {
+    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+  logout() {
+    this.auth.signOut();
+  } 
+
 
   ngOnInit() {
   }
 
-  //prompt CPF
- async cpfPrompt() {
-  const alert = await this.alertCtrl.create({
-    title: 'Login',
-    header: 'Login',
-    inputs: [
-      {
-        name: 'cpf',
-        placeholder: 'CPF',
-        type: 'number'
-      },
-      {
-        name: 'password',
-        placeholder: 'Senha',
-        type: 'password'
-      }
-    ],
-    buttons: [
-      {
-        text: 'Cancelar',
-        role: 'cancel',
-        handler: data => {
-          console.log('Login cancelado!');
+  //prompt Login
+  async loginPrompt() {
+    const alert = await this.alertCtrl.create({
+      title: 'Login',
+      header: 'Login',
+      inputs: [
+        {
+          name: 'ID',
+          placeholder: 'ID',
+          type: 'string',
+        
+        },
+        {
+          name: 'password',
+          placeholder: 'Senha',
+          type: 'password',
+
         }
-      },
-      {
-        text: 'Login',
-        handler: data => {
-          if (User.isValid(data.username, data.password)) {
-            // logged in!
-          } else {
-            // invalid login
-            return false;
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: data => {
+            console.log('Login cancelado!');
+          }
+        },
+        {
+          text: 'Login',
+          handler: data => {
+            if (User.isValid(data.username, data.password)) {
+              // logged in!
+            } else {
+              // invalid login
+              return false;
+            }
           }
         }
-      }
-    ]
-  });
- await alert.present();
-}
-
-//prompt Facebook
-async fbPrompt() {
-  const alert = await this.alertCtrl.create({
-    title: 'Login',
-    header: 'Login',
-    inputs: [
-      {
-        name: 'e-mail',
-        placeholder: 'E-mail'
-      },
-      {
-        name: 'password',
-        placeholder: 'Senha',
-        type: 'password'
-      }
-    ],
-    buttons: [
-      {
-        text: 'Cancelar',
-        role: 'cancel',
-        handler: data => {
-          console.log('Login cancelado!');
-        }
-      },
-      {
-        text: 'Login',
-        handler: data => {
-          if (User.isValid(data.username, data.password)) {
-            // logged in!
-          } else {
-            // invalid login
-            return false;
-          }
-        }
-      }
-    ]
-  });
- await alert.present();
-}
-
- //prompt google
-async googlePrompt() {
-const alert = await this.alertCtrl.create({
-  title: 'Login',
-  header: 'Login',
-  inputs: [
-    {
-      name: 'e-mail',
-      placeholder: 'E-mail'
-    },
-    {
-      name: 'password',
-      placeholder: 'Senha',
-      type: 'password'
-    }
-  ],
-  buttons: [
-    {
-      text: 'Cancelar',
-      role: 'cancel',
-      handler: data => {
-        console.log('Login cancelado!');
-      }
-    },
-    {
-      text: 'Login',
-      handler: data => {
-        if (User.isValid(data.username, data.password)) {
-          // logged in!
-        } else {
-          // invalid login
-          return false;
-        }
-      }
-    }
-  ]
-});
-await alert.present();
-}
+      ]
+    });
+    await alert.present();
+  }
 
 
-//prompt Cadastro
-async cadPrompt() {
-  const alert = await this.alertCtrl.create({
-    title: 'Registro',
-    header: 'Registro',
-    inputs: [
-      {
-        name: 'username',
-        placeholder: 'ID'
+  //prompt Cadastro
+  async cadPrompt() {
+    const alert = await this.alertCtrl.create({
+      title: 'Registro',
+      header: 'Registro',
+      inputs: [
+        {
+          name: 'username',
+          placeholder: 'ID',
+
+        
       },
       {
         name: 'password',
@@ -184,6 +117,6 @@ async cadPrompt() {
     ]
   });
  await alert.present();
-}
+} 
 
 }

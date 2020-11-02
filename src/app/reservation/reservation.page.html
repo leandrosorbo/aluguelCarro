@@ -79,16 +79,16 @@
     <ion-item> 
       <ion-checkbox slot="start" [(ngModel)] = "car.completed" (click)="presentAlert()"></ion-checkbox>
       <ion-label>{{car.name}}</ion-label>
-      <ion-button fill="outline" slot="end">Detalhes</ion-button> 
+      <ion-button fill="outline" slot="end" (click)="detailsAlert(car)">Detalhes</ion-button> 
     </ion-item>
     <img src="{{car.img}}">
     <ion-card-content>
       30/09/2012 - 18:00
     </ion-card-content>
   </ion-card>
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab  button routerLink="/home" vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button color="success">
-      <ion-icon name="add"></ion-icon>
+      <ion-icon name="car-sport-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab> 
 
