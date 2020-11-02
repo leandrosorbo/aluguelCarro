@@ -59,7 +59,7 @@
             </ion-menu-toggle>
           </ion-buttons>
           
-          <ion-title>CLICK CAR</ion-title>
+          <ion-title>Ache e Alugue - ClickCar</ion-title>
         </ion-toolbar>
         </ion-header>
       <ion-content class="ion-padding">
@@ -67,7 +67,12 @@
         <h6><strong>ONDE GOSTARIA DE RETIRAR?</strong></h6>
         <ion-item>
           <ion-icon name="location" slot="start"></ion-icon>
-            <ion-buttons><ion-button (click)="selectLocation()"> Selecione o local de retirada </ion-button> </ion-buttons>            
+          <ion-select id="customActionSheetSelect1" interface="action-sheet" placeholder="Selecione local para retirar"
+            cancel-text="Voltar">
+            <ion-select-option value="aricanduva">Shopping Aricanduva</ion-select-option>
+            <ion-select-option value="mooca">Shopping Mooca</ion-select-option>
+            <ion-select-option value="higienopolis">Shopping Pátio Higienópolis</ion-select-option>
+          </ion-select>
         </ion-item>
         <br>
         <ion-item>
@@ -78,9 +83,14 @@
             [min]="minDateInput" [max]="maxDateInput"></ion-datetime>
         </ion-item>
         <h6><strong>ONDE GOSTARIA DE DEVOLVER?</strong></h6>
-      <ion-item>
+        <ion-item>
           <ion-icon name="location" slot="start"></ion-icon>
-            <ion-buttons><ion-button (click)="selectLocation()"> Selecione o local de devolução </ion-button> </ion-buttons>            
+          <ion-select id="customActionSheetSelect2" interface="action-sheet" placeholder="Selecione local para retirar"
+	    cancel-text="Voltar">
+            <ion-select-option value="aricanduva">Shopping Aricanduva</ion-select-option>
+            <ion-select-option value="mooca">Shopping Mooca</ion-select-option>
+            <ion-select-option value="higienopolis">Shopping Pátio Higienópolis</ion-select-option>
+          </ion-select>
         </ion-item>
       <br>
       <ion-item>
