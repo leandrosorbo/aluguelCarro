@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form (ngSubmit)="onLogin()">
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+    </ion-item>
+
+
+    <!--validar botão-->
+    <ion-button type="submit" block expand="block" (click)="closeModal()">Entrar</ion-button>
+  </form>
+</ion-content>

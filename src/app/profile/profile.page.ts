@@ -1,7 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase/app';
+//import { auth } from 'firebase/app';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { LoginUserComponent } from './login-user/login-user.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+
+
+
+
 
 
 @Component({
@@ -11,112 +20,27 @@ import firebase from 'firebase/app';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private alertCtrl: AlertController, public auth: AngularFireAuth) { }
+  constructor(private ModalController: ModalController, private alertCtrl: AlertController, public auth: AngularFireAuth, private authService: AuthService, private router: Router) { }
+  
 
-    login() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }
-  logout() {
-    this.auth.signOut();
-  } 
+
+public async showModalLogin(){
+  const modal = await this.ModalController.create({
+    component: LoginUserComponent
+  });
+  modal.present()
+}
+
+public async showModalRegister(){
+  const modal = await this.ModalController.create({
+    component: RegisterUserComponent
+  });
+  modal.present()
+}
 
 
   ngOnInit() {
+    
   }
-
-  //prompt Login
-  async loginPrompt() {
-    const alert = await this.alertCtrl.create({
-      title: 'Login',
-      header: 'Login',
-      inputs: [
-        {
-          name: 'ID',
-          placeholder: 'ID',
-          type: 'string',
-        
-        },
-        {
-          name: 'password',
-          placeholder: 'Senha',
-          type: 'password',
-
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: data => {
-            console.log('Login cancelado!');
-          }
-        },
-        {
-          text: 'Login',
-          handler: data => {
-            if (User.isValid(data.username, data.password)) {
-              // logged in!
-            } else {
-              // invalid login
-              return false;
-            }
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-
-  //prompt Cadastro
-  async cadPrompt() {
-    const alert = await this.alertCtrl.create({
-      title: 'Registro',
-      header: 'Registro',
-      inputs: [
-        {
-          name: 'username',
-          placeholder: 'ID',
-
-        
-      },
-      {
-        name: 'password',
-        placeholder: 'Senha',
-        type: 'password'
-      },
-      {
-        name: 'confirm password',
-        placeholder: 'Confirmar Senha',
-        type: 'password'
-      },
-      {
-        name: 'e-mail',
-        placeholder: 'e-mail'
-      },
-      {
-        name: 'cpf',
-        placeholder: 'CPF',
-        type: 'number'
-      }
-    ],
-    buttons: [
-      {
-        text: 'Cancelar',
-        role: 'cancel',
-        handler: data => {
-          console.log('Cadastro cancelado!');
-        }
-      },
-      {
-        text: 'Registrar',
-        handler: data => {
-          console.log('Cadastro efetuado com sucesso!')
-        }
-      }
-    ]
-  });
- await alert.present();
-} 
-
+  
 }
