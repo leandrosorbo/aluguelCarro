@@ -63,11 +63,12 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-        <img src="assets/img/logo.jpeg">
-        <h6><strong>ONDE GOSTARIA DE RETIRAR?</strong></h6>
+        <img class="animate__animated animate__backInRight" src="assets/img/logo.jpeg">
+       
+        <h6 class="animate__animated animate__fadeInLeftBig"><strong>ONDE GOSTARIA DE RETIRAR?</strong></h6>
         <ion-item>
-          <ion-icon name="location" slot="start"></ion-icon>
-          <ion-select id="customActionSheetSelect1" interface="action-sheet" placeholder="Selecione local para retirar"
+          <ion-icon class="animate__animated animate__fadeIn" name="location" slot="start"></ion-icon>
+          <ion-select class="animate__animated animate__fadeInLeftBig" id="customActionSheetSelect1" interface="action-sheet" placeholder="Selecione local para retirar"
             cancel-text="Voltar" [(ngModel)]="select1">
             <ion-select-option value="aricanduva">Shopping Aricanduva</ion-select-option>
             <ion-select-option value="mooca">Shopping Mooca</ion-select-option>
@@ -76,33 +77,35 @@
         </ion-item>
         <br>
         <ion-item>
-          <ion-icon name="calendar-outline" slot="start"></ion-icon>
-          <ion-datetime display-format="D de MMMM de YYYY" cancel-text="Cancelar" done-text="Confirmar"
+          <ion-icon class="animate__animated animate__fadeIn" name="calendar-outline" slot="start"></ion-icon>
+          <ion-datetime class="animate__animated animate__fadeInLeftBig" display-format="D de MMMM de YYYY" cancel-text="Cancelar" done-text="Confirmar"
             placeholder="Selecione a data de retirada"
             monthNames="Janeiro, Fevereiro, março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro"
             [min]="minDateInput" [max]="maxDateInput" [(ngModel)]="data1"></ion-datetime>
         </ion-item>
-        <h6><strong>ONDE GOSTARIA DE DEVOLVER?</strong></h6>
+        <h6 class="animate__animated animate__fadeInLeftBig"><strong>ONDE GOSTARIA DE DEVOLVER?</strong></h6>
         <ion-item>
-          <ion-icon name="location" slot="start"></ion-icon>
-          <ion-select id="customActionSheetSelect2" interface="action-sheet" [(ngModel)]="select2"
+          <ion-icon class="animate__animated animate__fadeIn" name="location" slot="start"></ion-icon>
+          <ion-select class="animate__animated animate__fadeInLeftBig" id="customActionSheetSelect2" interface="action-sheet" [(ngModel)]="select2"
             placeholder="Selecione local para retirar" cancel-text="Voltar">
             <ion-select-option value="aricanduva">Shopping Aricanduva</ion-select-option>
             <ion-select-option value="mooca">Shopping Mooca</ion-select-option>
             <ion-select-option value="higienopolis">Shopping Pátio Higienópolis</ion-select-option>
           </ion-select>
+
+
         </ion-item>
         <br>
         <ion-item>
-          <ion-icon name="calendar-outline" slot="start"></ion-icon>
-          <ion-datetime display-format="D de MMMM de YYYY" cancel-text="Cancelar" done-text="Confirmar"
+          <ion-icon class="animate__animated animate__fadeIn" name="calendar-outline" slot="start"></ion-icon>
+          <ion-datetime class="animate__animated animate__fadeInLeftBig" display-format="D de MMMM de YYYY" cancel-text="Cancelar" done-text="Confirmar"
             placeholder="Selecione a data de devolução"
             monthNames="Janeiro, Fevereiro, março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro"
             [min]="minDateOutput" [max]="maxDateOutput" [(ngModel)]="data2"></ion-datetime>
         </ion-item>
 
         <br>
-        <ion-button button expand="block" color="success" *ngIf="!select1 || !data1 || !select2 || !data2">Reservar
+        <ion-button class="animate__animated animate__fadeIn" button expand="block" color="success" *ngIf="!select1 || !data1 || !select2 || !data2">Reservar
         </ion-button>
 
         <ion-button *ngIf="select1 && data1 && select2 && data2" button routerLink="/fleet" expand="block"
