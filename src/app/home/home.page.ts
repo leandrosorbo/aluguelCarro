@@ -72,11 +72,4 @@ export class HomePage {
     this.storage.set('data2', this.data2);
   }
 
-
-
-//logout 
-logoutUser():Promise<void> {
-  return this.authService.logoutUser();
-}
-
 }

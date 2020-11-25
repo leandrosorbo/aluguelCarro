@@ -1,117 +1,63 @@
-<ion-app>
-  <ion-split-pane when="sm" content-id="main-content">
-    <ion-menu content-id="main-content">
-      <ion-header>
-        <ion-toolbar color="success">
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <ion-content>
-        <ion-list>
-          <ion-list-header>
-            Navigate
-          </ion-list-header>
-          <ion-menu-toggle auto-hide="false">
-            <ion-item button routerLink="/home">
-              <ion-icon slot="start" name='home'></ion-icon>
-              <ion-label>
-                Home
-              </ion-label>
-            </ion-item>
-            <ion-item button routerLink="/reservation">
-              <ion-icon slot="start" name="receipt"></ion-icon>
-              <ion-label>
-                Reservas
-              </ion-label>
-            </ion-item>
-            <ion-item button routerLink="/store">
-              <ion-icon slot="start" name="business"></ion-icon>
-              <ion-label>
-                Lojas
-              </ion-label>
-            </ion-item>
-            <ion-item button routerLink="/fleet">
-              <ion-icon slot="start" name="car"></ion-icon>
-              <ion-label>
-                Frota
-              </ion-label>
-            </ion-item>
-
-            <ion-item button (click) = "logoutUser()">
-              <ion-icon slot="start" name="log-out"></ion-icon>
-              <ion-label>
-                Logout
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-
-    <div class="ion-page" id="main-content">
-      <ion-header>
-        <ion-toolbar color="success">
-          <ion-buttons slot="start">
-            <ion-menu-toggle>
-              <ion-button>
-                <ion-icon slot="icon-only" name="menu"></ion-icon>
-              </ion-button>
-            </ion-menu-toggle>
-          </ion-buttons>
-
-          <ion-title>Ache e Alugue - ClickCar</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">
-        <img class="animate__animated animate__backInRight" src="assets/img/logo.jpeg">
-       
-        <h6 class="animate__animated animate__fadeInLeftBig"><strong>ONDE GOSTARIA DE RETIRAR?</strong></h6>
-        <ion-item>
-          <ion-icon class="animate__animated animate__fadeIn" name="location" slot="start"></ion-icon>
-          <ion-select class="animate__animated animate__fadeInLeftBig" id="customActionSheetSelect1" interface="action-sheet" placeholder="Selecione local para retirar"
-            cancel-text="Voltar" [(ngModel)]="select1">
-            <ion-select-option value="aricanduva">Shopping Aricanduva</ion-select-option>
-            <ion-select-option value="mooca">Shopping Mooca</ion-select-option>
-            <ion-select-option value="higienopolis">Shopping Pátio Higienópolis</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <br>
-        <ion-item>
-          <ion-icon class="animate__animated animate__fadeIn" name="calendar-outline" slot="start"></ion-icon>
-          <ion-datetime class="animate__animated animate__fadeInLeftBig" display-format="D de MMMM de YYYY" cancel-text="Cancelar" done-text="Confirmar"
-            placeholder="Selecione a data de retirada"
-            monthNames="Janeiro, Fevereiro, março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro"
-            [min]="minDateInput" [max]="maxDateInput" [(ngModel)]="data1"></ion-datetime>
-        </ion-item>
-        <h6 class="animate__animated animate__fadeInLeftBig"><strong>ONDE GOSTARIA DE DEVOLVER?</strong></h6>
-        <ion-item>
-          <ion-icon class="animate__animated animate__fadeIn" name="location" slot="start"></ion-icon>
-          <ion-select class="animate__animated animate__fadeInLeftBig" id="customActionSheetSelect2" interface="action-sheet" [(ngModel)]="select2"
-            placeholder="Selecione local para retirar" cancel-text="Voltar">
-            <ion-select-option value="aricanduva">Shopping Aricanduva</ion-select-option>
-            <ion-select-option value="mooca">Shopping Mooca</ion-select-option>
-            <ion-select-option value="higienopolis">Shopping Pátio Higienópolis</ion-select-option>
-          </ion-select>
-
-
-        </ion-item>
-        <br>
-        <ion-item>
-          <ion-icon class="animate__animated animate__fadeIn" name="calendar-outline" slot="start"></ion-icon>
-          <ion-datetime class="animate__animated animate__fadeInLeftBig" display-format="D de MMMM de YYYY" cancel-text="Cancelar" done-text="Confirmar"
-            placeholder="Selecione a data de devolução"
-            monthNames="Janeiro, Fevereiro, março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro"
-            [min]="minDateOutput" [max]="maxDateOutput" [(ngModel)]="data2"></ion-datetime>
-        </ion-item>
-
-        <br>
-        <ion-button class="animate__animated animate__fadeIn" button expand="block" color="success" *ngIf="!select1 || !data1 || !select2 || !data2">Reservar
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
         </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
 
-        <ion-button *ngIf="select1 && data1 && select2 && data2" button routerLink="/fleet" expand="block"
-          color="success" (click)="saveData()">Reservar</ion-button>
-      </ion-content>
-    </div>
-  </ion-split-pane>
-</ion-app>
+    <ion-title>Ache e Alugue - ClickCar</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <img class="animate__animated animate__backInRight" src="assets/img/logo.jpeg">
+
+  <h6 class="animate__animated animate__fadeInLeftBig"><strong>ONDE GOSTARIA DE RETIRAR?</strong></h6>
+  <ion-item>
+    <ion-icon class="animate__animated animate__fadeIn" name="location" slot="start"></ion-icon>
+    <ion-select class="animate__animated animate__fadeInLeftBig" id="customActionSheetSelect1" interface="action-sheet"
+      placeholder="Selecione local para retirar" cancel-text="Voltar" [(ngModel)]="select1">
+      <ion-select-option value="aricanduva">Shopping Aricanduva</ion-select-option>
+      <ion-select-option value="mooca">Shopping Mooca</ion-select-option>
+      <ion-select-option value="higienopolis">Shopping Pátio Higienópolis</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-icon class="animate__animated animate__fadeIn" name="calendar-outline" slot="start"></ion-icon>
+    <ion-datetime class="animate__animated animate__fadeInLeftBig" display-format="D de MMMM de YYYY"
+      cancel-text="Cancelar" done-text="Confirmar" placeholder="Selecione a data de retirada"
+      monthNames="Janeiro, Fevereiro, março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro"
+      [min]="minDateInput" [max]="maxDateInput" [(ngModel)]="data1"></ion-datetime>
+  </ion-item>
+  <h6 class="animate__animated animate__fadeInLeftBig"><strong>ONDE GOSTARIA DE DEVOLVER?</strong></h6>
+  <ion-item>
+    <ion-icon class="animate__animated animate__fadeIn" name="location" slot="start"></ion-icon>
+    <ion-select class="animate__animated animate__fadeInLeftBig" id="customActionSheetSelect2" interface="action-sheet"
+      [(ngModel)]="select2" placeholder="Selecione local para retirar" cancel-text="Voltar">
+      <ion-select-option value="aricanduva">Shopping Aricanduva</ion-select-option>
+      <ion-select-option value="mooca">Shopping Mooca</ion-select-option>
+      <ion-select-option value="higienopolis">Shopping Pátio Higienópolis</ion-select-option>
+    </ion-select>
+
+
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-icon class="animate__animated animate__fadeIn" name="calendar-outline" slot="start"></ion-icon>
+    <ion-datetime class="animate__animated animate__fadeInLeftBig" display-format="D de MMMM de YYYY"
+      cancel-text="Cancelar" done-text="Confirmar" placeholder="Selecione a data de devolução"
+      monthNames="Janeiro, Fevereiro, março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro"
+      [min]="minDateOutput" [max]="maxDateOutput" [(ngModel)]="data2"></ion-datetime>
+  </ion-item>
+
+  <br>
+  <ion-button class="animate__animated animate__fadeIn" button expand="block" color="success"
+    *ngIf="!select1 || !data1 || !select2 || !data2">Reservar
+  </ion-button>
+
+  <ion-button *ngIf="select1 && data1 && select2 && data2" button routerLink="/fleet" expand="block" color="success"
+    (click)="saveData()">Reservar</ion-button>
+</ion-content>
