@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -7,7 +8,7 @@ import 'firebase/auth';
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private angularFireAuth:AngularFireAuth) { }
 
   //função login
   loginUser(
@@ -39,6 +40,9 @@ export class AuthService {
     return firebase.auth().signOut();
   }
 
-
+  //autenticação para authguard
+getAuth(){
+  return this.angularFireAuth;
+}
   
 }

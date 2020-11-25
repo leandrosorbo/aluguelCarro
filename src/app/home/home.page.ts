@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { AuthService } from '../services/auth.service';
+
+
 
 
 @Component({
@@ -27,7 +30,7 @@ export class HomePage {
   minDateOutput: string = new Date().toISOString();
   maxDateOutput: string = new Date().toISOString();
 
-  constructor(private platform1: Platform, private platform2: Platform, private storage: Storage) {
+  constructor(private platform1: Platform, private platform2: Platform, private storage: Storage, private authService: AuthService) {
 
     this.platform1.ready().then(() => {
       let date1: Date = new Date();
@@ -69,11 +72,11 @@ export class HomePage {
     this.storage.set('data2', this.data2);
   }
 
-  // loadData() {
-//   this.storage.get(this.key).then((val) => {
-//     console.log('Your username is', val);
-//   });
-// }
 
+
+//logout 
+logoutUser():Promise<void> {
+  return this.authService.logoutUser();
+}
 
 }

@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule), canActivate:[AuthGuard] //Authguard trava acesso para home
   },
   {
     path: '',
@@ -13,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'reservation',
-    loadChildren: () => import('./reservation/reservation.module').then( m => m.ReservationPageModule)
+    loadChildren: () => import('./reservation/reservation.module').then( m => m.ReservationPageModule), canActivate:[AuthGuard] //Authguard trava acesso para reservas
   },
   {
     path: 'profile',
@@ -21,11 +23,11 @@ const routes: Routes = [
   },
   {
     path: 'fleet',
-    loadChildren: () => import('./fleet/fleet.module').then( m => m.FleetPageModule)
+    loadChildren: () => import('./fleet/fleet.module').then( m => m.FleetPageModule), canActivate:[AuthGuard] //Authguard trava acesso para frota
   },
   {
     path: 'store',
-    loadChildren: () => import('./store/store.module').then( m => m.StorePageModule)
+    loadChildren: () => import('./store/store.module').then( m => m.StorePageModule), canActivate:[AuthGuard] //Authguard trava acesso para lojas
   },
 ];
 

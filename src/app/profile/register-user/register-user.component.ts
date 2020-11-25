@@ -13,8 +13,7 @@ import * as firebase from 'firebase';
 })
 export class RegisterUserComponent implements OnInit {
   
-  // public email: string = '';
-  // public password: string = '';
+
 
   public user = {
     email: '',
