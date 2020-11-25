@@ -67,11 +67,11 @@
 <ion-content>
   <ion-segment (ionChange)="segmentChanged()" [(ngModel)] = "selectedSegment">
     <ion-segment-button value="current">
-      <ion-label>Atuais</ion-label>
+      <ion-label><strong>Disponiveis</strong></ion-label>
     </ion-segment-button>
 
     <ion-segment-button value="previous">
-    <ion-label>Anteriores</ion-label>
+    <ion-label><strong>Reservados</strong></ion-label>
     </ion-segment-button>
   </ion-segment>
   
@@ -82,13 +82,10 @@
       <ion-button fill="outline" slot="end" (click)="detailsAlert(car)">Detalhes</ion-button> 
     </ion-item>
     <img src="{{car.img}}">
-    <ion-card-content>
-      30/09/2012 - 18:00
-    </ion-card-content>
-  </ion-card>
-  <ion-fab  button routerLink="/home" vertical="bottom" horizontal="center" slot="fixed">
+     </ion-card>
+  <ion-fab  button routerLink="/store" vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button color="success">
-      <ion-icon name="car-sport-outline"></ion-icon>
+      <ion-icon name="storefront-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab> 
 
