@@ -12,15 +12,37 @@
   <!--<form (ngSubmit)="signupUser()">-->
     <ion-item>
       <ion-label position="floating">E-mail</ion-label>
-      <ion-input type="text" [(ngModel)]="user.email" name="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Senha</ion-label> 
-      <ion-input type="password" [(ngModel)]="user.password" name="password"></ion-input>
+      <ion-input type="text" [(ngModel)]="user.email" name="email" #email="ngModel" required email></ion-input>
     </ion-item>
 
+    <!--autenticação-->
+    <div *ngIf="email.invalid && email.touched">
+      <ion-item color="danger" *ngIf="email.errors.required"> 
+        Digite seu e-mail
+      </ion-item>
+      <ion-item color="danger" *ngIf="email.errors.email"> 
+        Não é um e-mail valido
+      </ion-item>
+    </div> 
+   <!--autenticação-->
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password" name="password" #password="ngModel" required minlength="6"></ion-input>
+    </ion-item>
+
+    <!--autenticação-->
+    <div *ngIf="password.invalid && password.touched">
+      <ion-item color="danger" *ngIf="password.errors.required"> 
+        Digite sua senha
+      </ion-item>
+      <ion-item color="danger" *ngIf="password.errors.minlength"> 
+        Sua senha deve ter no minimo 6 caracteres
+      </ion-item>
+    </div> 
+   <!--autenticação-->
 
     <!--validar botão-->
-    <ion-button  type="submit" block color="success" expand="block"(click)="onRegister()" (click)="closeModal()">Registrar</ion-button>
+    <ion-button  type="submit" block color="success" expand="block"(click)="onRegister()" (click)="closeModal()" [disabled]="email.invalid || password.invalid">Registrar</ion-button>
  <!-- </form>  -->
 </ion-content>

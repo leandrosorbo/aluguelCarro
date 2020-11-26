@@ -13,8 +13,10 @@ import { ModalController } from '@ionic/angular';
 })
 export class LoginUserComponent implements OnInit {
 
-email:string;
-password:string;
+public user = {
+  email: '',
+  password:''
+}
 
 constructor(private alertCtrl: AlertController, private ModalController: ModalController, public auth: AngularFireAuth, private authService: AuthService, private router: Router) { }
 
@@ -27,13 +29,13 @@ constructor(private alertCtrl: AlertController, private ModalController: ModalCo
 
  //função login
  loginUser(): Promise<firebase.auth.UserCredential> {
-  return firebase.auth().signInWithEmailAndPassword(this.email, this.password);
+  return firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password);
 }
 
 
    //login Autenticação e rota
   async onLogin(): Promise<void> {
-    this.authService.loginUser(this.email, this.password).then(
+    this.authService.loginUser(this.user.email, this.user.password).then(
       () => {
         this.router.navigateByUrl('home');
       },
