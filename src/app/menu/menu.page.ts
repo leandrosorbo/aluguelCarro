@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,10 +9,38 @@ import { AuthService } from '../services/auth.service';
 })
 export class MenuPage {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private alertCtrl:AlertController) { }
 
   logoutUser(): Promise<void> {
     return this.authService.logoutUser();
   }
+
+  closeAlertController(){
+    this.alertCtrl.dismiss();
+  }
+
+  async confirmLogOut() {
+    const alert = await this.alertCtrl.create({
+      header: 'Atenção',
+      message: 'Você deseja realmente sair?',
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+          handler: () => {
+            this.closeAlertController();
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            this.logoutUser();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
 
 }
