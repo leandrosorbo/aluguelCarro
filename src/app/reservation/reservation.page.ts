@@ -180,7 +180,7 @@ public segmentChanged(){
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Carro confirmado',
-      message: 'Você deseja confirmar a escolha desse carro?',
+      message: 'Carro reservado com sucesso!',
       buttons: ['OK']
     });
 
@@ -209,10 +209,6 @@ public segmentChanged(){
   
 }
 
-// loadData() {
-//   this.storage.get(this.key).then((val) => {
-//     console.log('Your username is', val);
-//   });
-// }
+
 
 }
